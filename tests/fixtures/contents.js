@@ -21,3 +21,18 @@ export const menubar = [
     'Meer'
   ];
   
+
+  export const assortments = [
+    'Pasen',
+    'Cadeaubonnen',
+    "Moederdag",
+    'Chocolade',
+    'Borrelpakketten',
+    'Beauty',
+    'Brievenbus cadeaus',
+    'Cadeaupakketten',
+    'Champagne & mousserend',
+    'Fruit',
+    'Bloemen',
+    'Taarten'
+  ];

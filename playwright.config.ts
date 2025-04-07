@@ -77,3 +77,7 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+
+module.exports = {
+  reporter: [['allure-playwright']],
+};
