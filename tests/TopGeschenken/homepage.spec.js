@@ -3,6 +3,9 @@ import * as contents from "../fixtures/contents.js";
 
 const URL = "https://topgeschenken.nl/";
 const web = "Topgeschenken.nl";
+test.use({
+  viewport: { width: 1800, height: 1200 },
+});
 
 test.describe.skip("Homepage", () => {
   test.beforeEach(async ({ page }) => {
@@ -58,9 +61,8 @@ test.describe("Homepage - booking flow", () => {
   });
   test.afterEach(async ({ page }) => {
     await page.waitForTimeout(5000);
-    await page.close();
   });
-  test.only("book a beauty product", async ({ page }) => {
+  test.only("book a chocolate", async ({ page }) => {
     await page.click("#item-130");
     const url = page.url();
     expect(url).toContain("chocolade");
@@ -77,9 +79,60 @@ test.describe("Homepage - booking flow", () => {
 
     await expect(page.url()).toContain("tonys-chocolonely-je-wordt-bedankt");
     await expect(page.locator(".product-title")).toHaveText(tony);
-    await page.click('button:has-text("Voeg toe aan winkelwagen")');
-    await page.waitForTimeout(5000);
-    page.on('dialog', dialog => dialog.accept());
-    await page.click('button:has-text("Doorgaan zonder kaartje")');
+    await page.waitForTimeout(2000);
+    await page.click('#product_form_submit:has-text("Voeg toe aan winkelwagen")');
+
+    page.on("dialog", async (dialog) => {
+      console.log(`mesg`, dialog.message());
+      await dialog.accept();
+    });
+    await page.getByRole("button", { name: "Doorgaan zonder kaartje" }).click();
+    await page.click('a:has-text("Verder gaan met bestellen")');
+
+
+  await page.locator('#cart_order_deliveryAddressType').selectOption('1');
+  await page.locator('#cart_order_deliveryAddressAttn').click();
+  await page.locator('#cart_order_deliveryAddressAttn').fill('Jan');
+  await page.locator('#cart_order_deliveryAddressPostcode').click();
+  await page.locator('#cart_order_deliveryAddressPostcode').fill('1025XL');
+  await page.locator('#cart_order_deliveryAddressNumber').click();
+  await page.locator('#cart_order_deliveryAddressNumber').fill('2000');
+  await page.locator('#cart_order_deliveryAddressStreet').dblclick();
+  await page.locator('#cart_order_deliveryAddressPhoneNumber').click();
+  await page.locator('#cart_order_deliveryAddressPhoneNumber').fill('08008844');
+    // Get tomorrow's date
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  // Format it as e.g., "April 10,"
+  const options = { month: 'long', day: 'numeric' };
+  const formattedDate = tomorrow.toLocaleDateString('en-US', options).toLowerCase(); 
+
+  await page.getByLabel(formattedDate).click();
+  await page.getByRole('button', { name: 'Volgende stap' }).click();
+  await page.getByRole('radio', { name: 'Nee (doorgaan als gast)' }).check();
+  await page.locator('#cart_customer_email').click();
+  await page.locator('#cart_customer_email').fill('tester@1secmail.com');
+  await page.locator('#cart_customer_firstname').click();
+  await page.locator('#cart_customer_firstname').fill('Amer');
+  await page.locator('#cart_customer_lastname').click();
+  await page.locator('#cart_customer_lastname').fill('Noordhuizen');
+  await page.locator('#cart_customer_default_invoice_address_postcode').dblclick();
+  await page.locator('#cart_customer_default_invoice_address_postcode').fill('1025XL');
+  await page.locator('#cart_customer_default_invoice_address_number').dblclick();
+  await page.locator('#cart_customer_default_invoice_address_number').fill('2000');
+  await page.locator('#cart_customer_default_invoice_address_street').click();
+  await page.locator('#cart_customer_phonenumber').dblclick();
+  await page.locator('#cart_customer_phonenumber').fill('08008844');
+  await page.getByRole('checkbox', { name: 'Ik ontvang graag nieuws-en' }).uncheck();
+  await page.getByRole('checkbox', { name: 'Ik accepteer de algemene' }).check();
+  await page.getByRole('radio', { name: 'iDEAL' }).check();
+  await page.getByRole('button', { name: 'Bestelling betalen' }).click();
+  await page.getByTestId('payment-qr-title').click();
+  await page.getByTestId('cancel-transaction-button').click();
+  await page.getByRole('heading', { name: 'Are you sure you want to' }).click();
+  await page.getByText('If you cancel, you will be').click();
+  await page.getByTestId('cancel-transaction-confirm-dialog-confirm').click();
   });
 });
+
+
