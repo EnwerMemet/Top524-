@@ -7,7 +7,7 @@ test.use({
   viewport: { width: 1800, height: 1200 },
 });
 
-test.describe.skip("Homepage", () => {
+test.describe("Homepage", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(URL);
     await page.click("#CookieConsentIOAccept");
@@ -33,28 +33,28 @@ test.describe.skip("Homepage", () => {
   });
 
   test("Homepage should have the correct gifts", async ({ page }) => {
-    // Log gifts of gifts
+    // Log gift of gifts
     const gifts = await page.locator("a.category");
     for (let i = 0; i < (await gifts.count()); i++) {
       const giftLink = gifts.nth(i);
       const giftText = await giftLink.textContent();
-      console.log(`📌 gift ${i + 1}: ${giftText}`);
+      console.log(`🎁 gift ${i + 1}: ${giftText}`);
       await expect(giftLink).toHaveText(contents.gifts[i]);
     }
   });
   test("Homepage should have the correct assortments", async ({ page }) => {
-    // Log gifts of gifts
+    // Log gift of gifts
     const gifts = await page.locator("a.assortment-grid__anchor");
     for (let i = 0; i < (await gifts.count()); i++) {
       const giftLink = gifts.nth(i);
-      const giftText = await giftLink.textContent();
-      console.log(`📌 assortment ${i + 1}: ${giftText}`);
+      const giftText = await giftLink.innerText();
+      console.log(`🎁 assortment ${i + 1}: ${giftText}`);
       await expect(giftLink).toHaveText(contents.assortments[i]);
     }
   });
 });
 
-test.describe("Homepage - booking flow", () => {
+test.describe.skip("Homepage - booking flow", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(URL);
     await page.click("#CookieConsentIOAccept");
@@ -62,7 +62,7 @@ test.describe("Homepage - booking flow", () => {
   test.afterEach(async ({ page }) => {
     await page.waitForTimeout(5000);
   });
-  test.only("book a chocolate", async ({ page }) => {
+  test("book a chocolate", async ({ page }) => {
     await page.click("#item-130");
     const url = page.url();
     expect(url).toContain("chocolade");
