@@ -1,0 +1,68 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Create account >> Login with account
+- Location: /Users/enwer/Desktop/TestAutomation/TopGeschenken/tests/TopGeschenken/login.spec.js:38:8
+
+# Error details
+
+```
+Error: "context" and "page" fixtures are not supported in "beforeAll" since they are created on a per-test basis.
+If you would like to reuse a single page between tests, create context manually with browser.newContext(). See https://aka.ms/playwright/reuse-page for details.
+If you would like to configure your page before each test, do that in beforeEach hook instead.
+```
+
+# Test source
+
+```ts
+   1 | const { test, expect } = require("@playwright/test");
+   2 | import { faker } from "@faker-js/faker/locale/en";
+   3 | const fs = require("fs");
+   4 |
+   5 | const URL = "https://topgeschenken.nl/";
+   6 |
+   7 | test.use({
+   8 |   viewport: { width: 1800, height: 1200 },
+   9 | });
+  10 |
+  11 | async function navigateToHomepage(page, URL) {
+  12 |     console.log("🌐 Navigating to homepage...");
+  13 |     await page.goto(URL);
+  14 |     await page.click("#CookieConsentIOAccept");
+  15 |     await page.waitForTimeout(2000);
+  16 |     console.log("✅ Homepage loaded and cookie accepted");
+  17 |   }
+  18 |   async function generateEmail() {
+  19 |     // const firstName = faker.person.firstName();
+  20 |     const firstName = "Floyd";
+  21 |     // const lastName = faker.person.lastName();
+  22 |     const lastName = "Harvey";
+  23 |     // const email = faker.internet.email({ firstName, lastName });
+  24 |     const email = "Floyd_Harvey48@yahoo.com";
+  25 |     console.log(`📧 Generated email: ${email} for ${firstName} ${lastName}`);
+  26 |   }
+  27 |   
+  28 | test.describe("Create account", () => {
+  29 |   test.beforeAll(async ({ page }) => {
+  30 |     await generateEmail();
+  31 |   });
+  32 |
+  33 |   test.beforeEach(async ({ page }) => {
+  34 |     await navigateToHomepage(page, URL);
+  35 |   });
+  36 |
+  37 |
+> 38 |   test.only("Login with account", async ({ page }) => {
+     |        ^ Error: "context" and "page" fixtures are not supported in "beforeAll" since they are created on a per-test basis.
+  39 |     await page.locator().getByRole("input", { name: "username" }).fill(email);
+  40 |     await page
+  41 |       .locator()
+  42 |       .getByRole("input", { name: "password" })
+  43 |       .fill("Top123!");
+  44 |   }) });
+```

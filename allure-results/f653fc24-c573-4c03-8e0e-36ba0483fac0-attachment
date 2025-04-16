@@ -1,0 +1,404 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Create account >> Homepage should have the correct title
+- Location: /Users/enwer/Desktop/TestAutomation/TopGeschenken/tests/TopGeschenken/createAccount.spec.js:20:3
+
+# Error details
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: "Floyd"
+Received: ""
+    at /Users/enwer/Desktop/TestAutomation/TopGeschenken/tests/TopGeschenken/createAccount.spec.js:58:22
+```
+
+# Page snapshot
+
+```yaml
+- banner:
+  - link "Topgeschenken.nl"
+  - img "Thuiswinkel.org popup logo"
+  - text: Certificering
+  - img "Thuiswinkel.org header logo"
+  - text: "Veilig online shoppen doe je bij webwinkels met Thuiswinkel Waarborg! Uitgegeven aan: Topgeschenken.nl Controleer echtheid"
+  - search:
+    - searchbox "Product zoeken"
+    - paragraph: Minimaal 3 karakters
+    - button "Zoeken":
+      - img
+  - text: Prijzen incl. btw
+  - link "Offerte aanvragen"
+  - text: "|"
+  - link "Account"
+  - text: "|"
+  - link "Uitloggen"
+  - link "Winkelwagen":
+    - img "Winkelwagen"
+- link "Geschenken"
+- link "Bloemen"
+- link "Taarten"
+- link "Fruit"
+- link "Pasen"
+- link "Kaarten"
+- link "Moederdag"
+- link "Voorkeurstaal EN":
+  - img
+- navigation:
+  - list:
+    - listitem:
+      - link "Dranken"
+    - listitem:
+      - link "Eten"
+    - listitem:
+      - link "Cadeaubonnen"
+    - listitem:
+      - link "Ballonnen"
+    - listitem:
+      - link "Duurzaam"
+    - listitem:
+      - link "Beauty & wonen"
+    - listitem:
+      - link "Brievenbus"
+    - listitem:
+      - link "Meer"
+- navigation:
+  - list:
+    - listitem:
+      - link "Accountoverzicht"
+    - listitem:
+      - link "Bestellingen"
+    - listitem
+    - listitem: Instellingen
+    - listitem:
+      - link "Persoonlijke informatie"
+    - listitem:
+      - link "Adresboek"
+    - listitem:
+      - link "Wachtwoord wijzigen"
+    - listitem:
+      - link "Nieuwsbrief voorkeuren"
+- article:
+  - heading "Instellingen" [level=3]
+  - heading "Persoonlijke informatie" [level=4]
+  - radio "Mevr."
+  - text: Mevr.
+  - radio "Dhr." [checked]
+  - text: Dhr. Geslacht*
+  - textbox: Floyd
+  - text: Voornaam*
+  - textbox: Harvey
+  - text: Achternaam*
+  - textbox
+  - text: Bedrijfsnaam Land
+  - radio "Nederland" [checked]
+  - text: Nederland
+  - radio "België"
+  - text: België
+  - radio "Anders, namelijk"
+  - text: Anders, namelijk
+  - textbox: Buikslotermeerplein
+  - text: Straat*
+  - textbox: 1025XL
+  - text: Postcode*
+  - textbox: "2000"
+  - text: Huisnr*
+  - textbox
+  - text: Toevoeging
+  - textbox: Amsterdam
+  - text: Plaats*
+  - textbox: "08008844"
+  - text: Telefoonnummer* Geboortedatum
+  - combobox:
+    - option
+    - option "1" [selected]
+    - option "2"
+    - option "3"
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+    - option "17"
+    - option "18"
+    - option "19"
+    - option "20"
+    - option "21"
+    - option "22"
+    - option "23"
+    - option "24"
+    - option "25"
+    - option "26"
+    - option "27"
+    - option "28"
+    - option "29"
+    - option "30"
+    - option "31"
+  - combobox:
+    - option
+    - option "januari" [selected]
+    - option "februari"
+    - option "maart"
+    - option "april"
+    - option "mei"
+    - option "juni"
+    - option "juli"
+    - option "augustus"
+    - option "september"
+    - option "oktober"
+    - option "november"
+    - option "december"
+  - combobox:
+    - option
+    - option "2012"
+    - option "2011"
+    - option "2010"
+    - option "2009"
+    - option "2008"
+    - option "2007"
+    - option "2006"
+    - option "2005"
+    - option "2004"
+    - option "2003"
+    - option "2002"
+    - option "2001"
+    - option "2000" [selected]
+    - option "1999"
+    - option "1998"
+    - option "1997"
+    - option "1996"
+    - option "1995"
+    - option "1994"
+    - option "1993"
+    - option "1992"
+    - option "1991"
+    - option "1990"
+    - option "1989"
+    - option "1988"
+    - option "1987"
+    - option "1986"
+    - option "1985"
+    - option "1984"
+    - option "1983"
+    - option "1982"
+    - option "1981"
+    - option "1980"
+    - option "1979"
+    - option "1978"
+    - option "1977"
+    - option "1976"
+    - option "1975"
+    - option "1974"
+    - option "1973"
+    - option "1972"
+    - option "1971"
+    - option "1970"
+    - option "1969"
+    - option "1968"
+    - option "1967"
+    - option "1966"
+    - option "1965"
+    - option "1964"
+    - option "1963"
+    - option "1962"
+    - option "1961"
+    - option "1960"
+    - option "1959"
+    - option "1958"
+    - option "1957"
+    - option "1956"
+    - option "1955"
+    - option "1954"
+    - option "1953"
+    - option "1952"
+    - option "1951"
+    - option "1950"
+    - option "1949"
+    - option "1948"
+    - option "1947"
+    - option "1946"
+    - option "1945"
+    - option "1944"
+    - option "1943"
+    - option "1942"
+    - option "1941"
+    - option "1940"
+    - option "1939"
+    - option "1938"
+    - option "1937"
+    - option "1936"
+    - option "1935"
+    - option "1934"
+    - option "1933"
+    - option "1932"
+    - option "1931"
+    - option "1930"
+    - option "1929"
+    - option "1928"
+    - option "1927"
+    - option "1926"
+    - option "1925"
+  - text: Voorkeurstaal
+  - combobox "Voorkeurstaal":
+    - option "Nederlands" [selected]
+    - option "American English"
+  - button "Opslaan"
+- contentinfo:
+  - heading "Service & contact" [level=3]
+  - list:
+    - listitem:
+      - link "Klantenservice"
+    - listitem:
+      - link "Veel gestelde vragen"
+    - listitem:
+      - link "Bestellen & Betalen"
+    - listitem:
+      - link "Algemene voorwaarden Thuiswinkel"
+    - listitem:
+      - link "Uw privacy"
+    - listitem:
+      - link "Pers"
+  - heading "Zakelijk" [level=3]
+  - list:
+    - listitem:
+      - link "Zakelijk account"
+    - listitem:
+      - link "Offerte en maatwerk"
+    - listitem:
+      - link "Koppeling met ERP/SRM"
+    - listitem:
+      - link "ISO 27001 certificering"
+  - heading "Topgeschenken.nl" [level=3]
+  - list:
+    - listitem:
+      - link "Over Topgeschenken.nl"
+    - listitem:
+      - link "De mensen achter Topgeschenken.nl"
+    - listitem:
+      - link "Duurzaamheid Topgeschenken.nl"
+    - listitem:
+      - link "Werken bij Topgeschenken.nl"
+    - listitem:
+      - link "Beoordelingen"
+    - listitem:
+      - link "Blog"
+  - heading "Feestdagen" [level=3]
+  - list:
+    - listitem:
+      - link "Pasen"
+    - listitem:
+      - link "Sinterklaas"
+    - listitem:
+      - link "Kerst"
+    - listitem:
+      - link "Cadeau tips"
+    - listitem:
+      - link "Aanbiedingen"
+  - img
+  - img
+  - img
+  - img
+  - img
+  - img
+  - img
+  - img
+  - link "Facebook":
+    - img
+  - link "Linkedin":
+    - img
+- link "Chat met Diana Chat avatar":
+  - text: Chat met Diana
+  - img "Chat avatar"
+```
+
+# Test source
+
+```ts
+   1 | const { test, expect } = require("@playwright/test");
+   2 | import { faker } from "@faker-js/faker/locale/en";
+   3 | const fs = require("fs");
+   4 |
+   5 | const URL = "https://topgeschenken.nl/";
+   6 |
+   7 | test.use({
+   8 |   viewport: { width: 1800, height: 1200 },
+   9 | });
+  10 |
+  11 | async function navigateToHomepage(page, URL) {
+  12 |   console.log("🌐 Navigating to homepage...");
+  13 |   await page.goto(URL);
+  14 |   await page.click("#CookieConsentIOAccept");
+  15 |   await page.waitForTimeout(2000);
+  16 |   console.log("✅ Homepage loaded and cookie accepted");
+  17 | }
+  18 |
+  19 | test.describe("Create account", () => {
+  20 |   test("Homepage should have the correct title", async ({ page }) => {
+  21 |     await navigateToHomepage(page, URL);
+  22 |
+  23 |     const firstName = faker.person.firstName();
+  24 |     const lastName = faker.person.lastName();
+  25 |     const email = faker.internet.email({ firstName, lastName });
+  26 |     console.log(`📧 Generated email: ${email}`);
+  27 |
+  28 |     console.log("🔐 Starting registration process...");
+  29 |     await page.getByRole("link", { name: "Inloggen" }).click();
+  30 |     await page.locator("#email").fill(email);
+  31 |     await page.getByRole("radio", { name: "Particulier" }).check();
+  32 |     await page.getByRole("button", { name: "Registreren" }).click();
+  33 |
+  34 |     console.log("📝 Filling personal details...");
+  35 |     await page.getByRole("radio", { name: "Dhr." }).check();
+  36 |     await page.locator("#customer_firstname").fill(firstName);
+  37 |     await page.locator("#customer_lastname").fill(lastName);
+  38 |     await page.locator("#customer_addresses_0_postcode").fill("1025XL");
+  39 |     await page.locator("#customer_addresses_0_number").fill("2000");
+  40 |     await page.locator("#customer_phoneNumber").fill("08008844");
+  41 |     await page.locator("#customer_birthday_day").selectOption("1");
+  42 |     await page.locator("#customer_birthday_month").selectOption("1");
+  43 |     await page.locator("#customer_birthday_year").selectOption("2000");
+  44 |     await page.locator("#customer_plainPassword").fill("Top123!");
+  45 |     await page.getByRole("button", { name: "Registreer je account" }).click();
+  46 |
+  47 |     console.log("👤 Verifying personal information...");
+  48 |     await page.getByRole("link", { name: "Persoonlijke informatie" }).click();
+  49 |
+  50 |     const forename = await page.locator("#customer_firstname").innerText();
+  51 |     const surname = await page.locator("#customer_lastname").innerText();
+  52 |
+  53 |     const countryNL = page.locator('#customer_country_choice_0');
+  54 |     const address = await page.locator("#customer_addresses_0_street").innerText();
+  55 |     const postcode = await page.locator("#customer_addresses_0_postcode").innerText();
+  56 |
+  57 |     console.log("🧪 verify personal info");
+> 58 |     expect(forename).toBe(firstName);
+     |                      ^ Error: expect(received).toBe(expected) // Object.is equality
+  59 |     expect(surname).toBe(lastName);
+  60 |     expect(countryNL).toBeChecked();
+  61 |     expect(address ).toBe('Buikslotermeerplein');
+  62 |     expect(postcode).toBe("1025XL");
+  63 |     console.log("✅ Personal information verified!");
+  64 |
+  65 |     console.log("🔁 Swapping first and last names...");
+  66 |     await page.locator("#customer_firstname").fill(lastName);
+  67 |     await page.locator("#customer_lastname").fill(firstName);
+  68 |     await page.getByRole("button", { name: "Opslaan" }).click();
+  69 |
+  70 |     console.log("✅ Account creation and verification completed!");
+  71 |   });
+  72 | });
+```

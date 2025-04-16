@@ -19,13 +19,12 @@ test.describe("Homepage - booking flow", () => {
     await page.waitForTimeout(6000);
   });
 
-  test.only("book a chocolate", async ({ page }) => {
+  test("Anonymous: order a chocolate", async ({ page }) => {
     console.log("🍫 Starting the booking flow for chocolate...");
 
     await page.click("#item-130");
     const url = page.url();
     expect(url).toContain("chocolade");
-
     const tony = `Tony's Chocolonely Je wordt bedankt`;
     await page.mouse.wheel(0, 500);
     await page
@@ -50,8 +49,8 @@ test.describe("Homepage - booking flow", () => {
 
     await page.getByRole("button", { name: "Doorgaan zonder kaartje" }).click();
     await page.click('a:has-text("Verder gaan met bestellen")');
-
     console.log("📋 Filling in delivery address...");
+    
     await page.locator('#cart_order_deliveryAddressType').selectOption('1');
     await page.locator('#cart_order_deliveryAddressAttn').click();
     await page.locator('#cart_order_deliveryAddressAttn').fill('Jan');
